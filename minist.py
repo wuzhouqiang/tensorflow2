@@ -1,6 +1,6 @@
 import tensorflow as tf
 
-mnist = tf.keras.datasets.mnist
+mnist = tf.keras.datasets.fashion_mnist
 
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 
@@ -16,6 +16,8 @@ model = tf.keras.models.Sequential(  # b 28 28
         tf.keras.layers.Dense(10, activation='softmax')
     ]
 )
+
+# targets 是 one-hot 编码，用 categorical_crossentropy  tagets 是 数字编码 ，用 sparse_categorical_crossentropy
 
 model.compile(optimizer=tf.keras.optimizers.Adam(),
               loss=tf.losses.sparse_categorical_crossentropy,
